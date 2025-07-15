@@ -8,7 +8,8 @@ from langchain import hub
 # --- Initialize LLM ---
 llm = ChatGoogleGenerativeAI(
     model="gemini-2.0-flash",
-    google_api_key="AIzaSyBlMM4x2iIvVAh_j_4fw9Rzwdi2BX8NhUA"
+    #I am adding it directly without any .env, Because it is a free one so not required right now
+    google_api_key="AIzaSyBlMM4x2iIvVAh_j_4fw9Rzwdi2BX8NhUA"  
 )
 
 # --- Load or initialize todo list ---
