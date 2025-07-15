@@ -2,18 +2,21 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>To-Do-List ChatBot</title>
+  <title>SnelloBot - To-Do List ChatBot</title>
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
     body {
       font-family: Arial, sans-serif;
       background: #f2f2f2;
       display: flex;
-      flex-direction: column;
-      height: 100vh;
-      align-items: center;
       justify-content: center;
+      align-items: center;
+      height: 100vh;
     }
 
     .chat-container {
@@ -29,11 +32,12 @@
     }
 
     .chat-header {
-      padding: 12px 16px;
       background: #0077cc;
-      color: white;
-      font-size: 1.2rem;
+      color: #fff;
+      padding: 20px;
       text-align: center;
+      font-size: 1.5rem;
+      font-weight: bold;
     }
 
     #chat {
@@ -47,16 +51,18 @@
 
     .bubble {
       max-width: 70%;
-      padding: 10px 14px;
-      border-radius: 16px;
+      padding: 12px 16px;
+      border-radius: 18px;
       line-height: 1.4;
       word-wrap: break-word;
     }
+
     .bot {
       background: #e1f0ff;
       align-self: flex-start;
       border-bottom-left-radius: 4px;
     }
+
     .user {
       background: #dcf8c6;
       align-self: flex-end;
@@ -67,7 +73,9 @@
       display: flex;
       padding: 12px;
       border-top: 1px solid #ddd;
+      background: #fafafa;
     }
+
     #userInput {
       flex: 1;
       padding: 10px;
@@ -75,6 +83,7 @@
       border: 1px solid #ccc;
       border-radius: 4px;
     }
+
     #sendBtn {
       margin-left: 8px;
       padding: 10px 16px;
@@ -84,10 +93,16 @@
       border: none;
       border-radius: 4px;
       cursor: pointer;
+      transition: background 0.2s;
     }
+
     #sendBtn:disabled {
       background: #cccccc;
       cursor: not-allowed;
+    }
+
+    #sendBtn:hover:not(:disabled) {
+      background: #005fa3;
     }
 
     #status {
@@ -95,20 +110,35 @@
       text-align: center;
       color: #555;
       font-style: italic;
+      font-size: 0.9rem;
+    }
+
+    .chat-footer {
+      background: #0077cc;
+      color: #fff;
+      text-align: center;
+      padding: 10px;
+      font-size: 0.85rem;
     }
   </style>
 </head>
 <body>
   <div class="chat-container">
-    <div class="chat-header">SnelloBot</div>
+    <div class="chat-header">SnelloBot - To-Do List Assistant</div>
+
     <div id="chat"></div>
     <div id="status"></div>
+
     <div class="input-container">
-      <input id="userInput" type="text" placeholder="Type your message..." />
+      <input id="userInput" type="text" placeholder="Type your message here..." />
       <button id="sendBtn" onclick="sendMessage()">Send</button>
     </div>
+
+    <div class="chat-footer">
+      &copy; 2025 SnelloBot. All rights reserved.
+    </div>
   </div>
-  
+
   <script>
     async function sendMessage() {
       const inputField = document.getElementById("userInput");
@@ -130,6 +160,7 @@
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ message: input })
         });
+
         const data = await res.json();
         chat.innerHTML += `<div class="bubble bot">${data.reply}</div>`;
       } catch {
@@ -142,8 +173,9 @@
       chat.scrollTop = chat.scrollHeight;
     }
 
-    document.getElementById("userInput")
-      .addEventListener("keypress", e => { if (e.key === "Enter") sendMessage(); });
+    document.getElementById("userInput").addEventListener("keypress", function(e) {
+      if (e.key === "Enter") sendMessage();
+    });
   </script>
 </body>
 </html>
