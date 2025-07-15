@@ -1,0 +1,25 @@
+# Python cache and build files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environment (if any)
+venv/
+env/
+
+# VS Code / PyCharm / other IDE settings (optional)
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+
+# Environment variables
+.env
+
+# To-Do JSON data
+todos.json
+
+# Log files (if any)
+*.log

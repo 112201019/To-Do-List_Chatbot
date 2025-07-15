@@ -72,7 +72,9 @@ agent_executor = AgentExecutor(
 
 # If you want a CLI fallback when running directly:
 if __name__ == "__main__":
-    print("Welcome to SnelloBot CLI! Type 'exit' to quit.\n")
+    for i in range(0, 5):
+        print("\n")
+    print("Welcome to To-do-List ChatBot CLI! Type 'exit' to quit.\n")
     while True:
         user_input = input("You: ")
         if user_input.strip().lower() == "exit":
